@@ -19,7 +19,57 @@
 }
 .title{
     background-color: rgba(240, 240, 240, 0.3);
+    font-size: xx-large;
 }
 .linegreen{
     border-color: lightgreen;
+}
+#quem-somos{   
+   
+    /* align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh; */
+}
+#headline{
+    max-width: 40%;
+    
+}
+.grid-qs{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+.side {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  flex: 1;
+}
+#headline {
+  flex: 1;
+  text-align: justify;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centraliza verticalmente dentro da div */
+}
+#quem-somos {
+  padding: 40px;
+  background-color: #f4f4f4;
+
+  
+}
+.image-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;  /* empurra a imagem para a direita da área dela */
+}
+
+.image-wrapper img {
+  max-width: 50%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

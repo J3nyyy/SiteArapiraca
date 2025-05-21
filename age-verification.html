@@ -1,0 +1,28 @@
+<div id="age-verification">
+  <div class="age-box">
+    <h2>Você tem mais de 18 anos?</h2>
+    <button onclick="confirmAge(true)">Sim</button>
+    <button onclick="confirmAge(false)">Não</button>
+  </div>
+</div>
+
+<style>
+ 
+</style>
+
+<script>
+  function confirmAge(isOfAge) {
+    if (isOfAge) {
+      document.getElementById("age-verification").style.display = "none";
+      localStorage.setItem("ageVerified", "true");
+    } else {
+      window.location.href = "https://www.google.com";
+    }
+  }
+
+  window.addEventListener("DOMContentLoaded", function () {
+    if (localStorage.getItem("ageVerified") === "true") {
+      document.getElementById("age-verification").style.display = "none";
+    }
+  });
+</script>
