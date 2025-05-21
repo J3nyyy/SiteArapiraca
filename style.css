@@ -1,0 +1,25 @@
+*{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+} 
+
+#content{
+  height: 100vh;              /* ocupa a altura da tela */
+  display: flex;
+  position: relative;
+  flex-direction: column;     /* empilha os itens verticalmente */
+  justify-content: center;    /* centraliza verticalmente */
+  align-items: center;        /* centraliza horizontalmente */
+  text-align: center;         /* para o texto ficar centralizado */
+  gap: 20px;                  /* espaço entre a imagem e o título */
+}
+.leavesBackground{
+  max-width: 30%;
+  position: absolute;
+  z-index: -1;
+}
+.title{
+    background-color: rgba(240, 240, 240, 0.3);
+}
+.linegreen{
+    border-color: lightgreen;
+}
