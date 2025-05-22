@@ -24,13 +24,7 @@
 .linegreen{
     border-color: lightgreen;
 }
-#quem-somos{   
-   
-    /* align-items: center;
-    justify-content: center;
-    text-align: center;
-    height: 100vh; */
-}
+
 #headline{
     max-width: 40%;
     
@@ -72,4 +66,57 @@
   border-radius: 8px;
   object-fit: cover;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+/* #contato-conteudo{
+ display: flex;   
+ justify-content: center;
+} */
+
+
+/* #formulario{
+    object-fit: cover;
+} */
+
+#contato-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+#contato-conteudo {
+  display: flex;
+  justify-content: center;
+  gap: 40px;               
+  flex-wrap: wrap;         
+  padding: 20px;
+}
+
+#contato-container,
+
+#contato-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+#formulario input,
+#formulario textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+}
+
+
+#contato h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.linha-vertical{
+width: 1px; 
+background-color: green;
+}
+#form{
+  padding: 20px;
 }
