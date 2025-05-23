@@ -138,6 +138,23 @@
 width: 1px; 
 background-color: green;
 }
+@media only screen and (max-width: 768px) {
+    .linha-vertical{
+      width: 0px;
+    }
+  
+}
+
 #form{
   padding: 20px;
+}
+#contato-mapa {
+  margin: 20px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+#mapa{
+  width: 100vh;
+  height: 30vh;
 }
