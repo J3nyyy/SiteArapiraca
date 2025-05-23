@@ -1,9 +1,9 @@
 *{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 } 
 
 #content{
-  height: 100vh;              /* ocupa a altura da tela */
+  height: 70vh;              /* ocupa a altura da tela */
   display: flex;
   position: relative;
   flex-direction: column;     /* empilha os itens verticalmente */
@@ -11,19 +11,35 @@
   align-items: center;        /* centraliza horizontalmente */
   text-align: center;         /* para o texto ficar centralizado */
   gap: 20px;                  /* espaço entre a imagem e o título */
+  background-color: #F2F2F2;
 }
 .leavesBackground{
-  width: 70vh;
+  width: 80vh;
   position: absolute;
-  z-index: -1;
+  z-index: 2;
 }
-.title{
-    background-color: rgba(240, 240, 240, 0.3);
-    font-size: xx-large;
+
+
+.title {
+  display: block;
+  width: 100vw; /* ocupa toda a largura da viewport */
+  margin: 0;
+  padding: 0;
+  text-align: center; /* centraliza o texto dentro da largura total */
+  background-color: rgba(255, 255, 255, 0.6); /* ou qualquer cor que quiser */
+  font-size: xx-large;
+}
+.linefill{
+  z-index: 2;
 }
 .linegreen{
     border-color: lightgreen;
+    margin: 5px;
+    min-width: 25%;
+    justify-self: center;
+
 }
+
 
 #headline{
     max-width: 40%;
