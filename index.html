@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -14,7 +14,6 @@
     <section id="content">
 
         <img class="leavesBackground" src="Imagens/Sem título (2).png" alt="" srcset="">
-        <!-- Remover espacamento no div abaixo -->
         <div class="linefill" >
             <p class="title">TABACO É O PASSADO, PRESENTE E FUTURO</p>
             <hr class="linegreen">
@@ -22,6 +21,104 @@
             
     </section>
     <script src="LoadHeader.js"></script>
+</body>
+
+</html> -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arapiraca</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: sans-serif;
+        }
+
+        #content {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            transition: opacity 0.6s ease;
+        }
+
+        .nav-link {
+            color: black;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .nav-link.active {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header"></div>
+    <script src="LoadHeader.js"></script>
+    <div id="content">Carregando...</div>
+
+    <script>
+        const pages = ['home.html', 'headline.html', 'Galeria.html', 'Produtos.html', 'sobre.html', 'Contato.html'];
+        let currentPage = 0;
+        const contentDiv = document.getElementById('content');
+        let isLoading = false;
+
+        function loadPage(index) {
+            if (index < 0 || index >= pages.length || isLoading) return;
+            isLoading = true;
+            contentDiv.style.opacity = 0;
+
+            setTimeout(() => {
+                fetch(pages[index])
+                    .then(response => response.text())
+                    .then(html => {
+                        contentDiv.innerHTML = html;
+                        contentDiv.style.opacity = 1;
+                        currentPage = index;
+                        document.querySelectorAll('.nav-link').forEach(link => {
+                            link.classList.remove('active');
+                            if (link.dataset.page === pages[index]) {
+                                link.classList.add('active');
+                            }
+                        });
+                        isLoading = false;
+                    });
+            }, 600);
+        }
+
+        window.addEventListener('wheel', (e) => {
+            if (isLoading) return;
+            if (e.deltaY > 0 && currentPage < pages.length - 1) {
+                loadPage(currentPage + 1);
+            } else if (e.deltaY < 0 && currentPage > 0) {
+                loadPage(currentPage - 1);
+            }
+        });
+
+        // Carregar a primeira página inicialmente
+        window.onload = () => {
+            loadPage(currentPage);
+        };
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('nav-link')) {
+                e.preventDefault();
+                const page = e.target.dataset.page;
+                const index = pages.indexOf(page);
+                if (index !== -1) loadPage(index);
+            }
+        });
+    </script>
 </body>
 
 </html>
