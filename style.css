@@ -13,7 +13,7 @@
   gap: 20px;                  /* espaço entre a imagem e o título */
 }
 .leavesBackground{
-  max-width: 30%;
+  width: 70vh;
   position: absolute;
   z-index: -1;
 }
@@ -42,16 +42,17 @@
   flex: 1;
 }
 #headline {
-  flex: 1;
   text-align: justify;
   display: flex;
   flex-direction: column;
   justify-content: center; /* centraliza verticalmente dentro da div */
+  align-items: center;
+  min-width: 50vh;
 }
 #quem-somos {
   padding: 40px;
   background-color: #f4f4f4;
-
+  
   
 }
 .image-wrapper {
@@ -61,7 +62,7 @@
 }
 
 .image-wrapper img {
-  max-width: 50%;
+  max-width: 50vh;
   height: auto;
   border-radius: 8px;
   object-fit: cover;
@@ -73,9 +74,10 @@
 } */
 
 
-/* #formulario{
+#formulario{
     object-fit: cover;
-} */
+    gap: 0;
+} 
 
 #contato-info{
     display: flex;
@@ -84,7 +86,10 @@
     gap: 20px;
     padding: 20px;
 }
-
+#mensagem{
+  resize: none;
+  min-height: 30%;
+}
 #contato-conteudo {
   display: flex;
   justify-content: center;
