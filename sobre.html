@@ -4,29 +4,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sobre</title>
+    <title>Sobre</title>
+<link rel="stylesheet" href="style.css">
+    <style>
+       
+        .missao-visao-valores h3 {
+            margin-bottom: 15px;
+            color: #222;
+
+        }
+
+        .missao-visao-valores p,
+        .missao-visao-valores ul {
+            color: #555;
+            line-height: 1.5;
+            margin-top: 0;
+        }
+
+        .missao-visao-valores ul {
+            padding-left: 20px;
+            text-align: left;
+        }
+
+        
+        .mvv{
+            display: flex;
+            
+            justify-content: center;
+        }
+        .missao{
+            width: 20%;
+            margin: 10px;
+            text-align: center;
+        }
+        .visao{
+            width: 20%;
+             margin: 10px;
+            text-align: center;
+
+        }
+        .valores{
+            width: 20%;
+             margin: 10px;
+            text-align: center;
+
+        }
+    </style>
 </head>
 
 <body>
     <div id="header"></div>
-    <section id="missao-visao-valores">
-        <h2>Arapiraca, a origem da qualidade</h2>
-        <h3>Missão</h3>
-        <p>Proporcionar produtos que satisfaçam as exigências de adultos que escolheram fumar,
-         cientes dos riscos.</p>
 
-        <h3>Visão</h3>
-        <p>Ser a empresa referência em processamento de fumo e produtos relacionados no Brasil.</p>
 
-        <h3>Valores</h3>
-        <ul>
-            <li>Comprometimentos</li>
-            <li>Ética</li>
-            <li>Honestidade</li>
-            <li>Trabalho em equipe</li>
-            <li>Competitividade</li>
-        </ul>
-    </section>
+    <h2>Arapiraca, a origem da qualidade</h2>
+    <div class="missao-visao-valores-container">
+        <section class="missao-visao-valores">
+
+
+            <div class="mvv">
+                <div class="missao">
+                    <img src="Imagens/iconeOlho.png" alt="Ícone Missão" class="icone-mvv">
+                    <h3 class="titulo-mvv">Missão</h3>
+                    <p>Proporcionar produtos que satisfaçam as exigências de adultos que escolheram fumar,
+                        cientes dos riscos.</p>
+                </div>
+                
+                <div class="linha-vertical"></div>
+
+                <div class="visao">
+                    <img src="Imagens/iconeAlvo.png" alt="Ícone Visão" class="icone-mvv2">
+                    <h3 class="titulo-mvv2">Visão</h3>
+                    <p>Ser a empresa referência em processamento de fumo e produtos relacionados no Brasil.</p>
+                </div>
+
+                <div class="linha-vertical"></div>
+
+                <div class="valores">
+                    <img src="Imagens/iconeDiamante.png" alt="Ícone Valores" class="icone-mvv3">
+                    <h3 class="titulo-mvv3">Valores</h3>
+                    <ul>
+                        <li>Comprometimentos</li>
+                        <li>Ética</li>
+                        <li>Honestidade</li>
+                        <li>Trabalho em equipe</li>
+                        <li>Competitividade</li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+    </div>
     <script src="LoadHeader.js"></script>
 </body>
 
