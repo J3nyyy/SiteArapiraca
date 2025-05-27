@@ -31,7 +31,7 @@
 
 .title {
   display: block;
-  width: 100vw;
+  width: 100%;
   /* ocupa toda a largura da viewport */
   margin: 0;
   padding: 0;
@@ -51,6 +51,35 @@
   margin: 5px;
   min-width: 25%;
   justify-self: center;
+
+}
+
+@media only screen and (max-width: 768px) {
+  
+  
+.leavesBackground {
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+}
+
+#content {
+  height: 80vh;
+  /* ocupa a altura da tela */
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  /* empilha os itens verticalmente */
+  justify-content: center;
+  /* centraliza verticalmente */
+  align-items: center;
+  /* centraliza horizontalmente */
+  text-align: center;
+  /* para o texto ficar centralizado */
+  gap: 20px;
+  /* espaço entre a imagem e o título */
+  background-color: #F2F2F2;
+}
 
 }
 
@@ -85,11 +114,31 @@
   text-align: justify;
   text-justify: inter-word;
 }
+
+@media only screen and (max-width: 768px) {
+  .grid-qs {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #column {
+    max-width: 70%;
+  }
+/* 
+  #column img {
+    width: 70%;
+    margin: 0;
+    padding: 0;
+  } */
+
+
+}
+
 /* #endregion */
 
 /* #region contato */
 
-#contato{
+#contato {
   min-height: 80vh;
 }
 
@@ -116,7 +165,7 @@
   justify-content: center;
   gap: 40px;
   flex-wrap: wrap;
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 #contato-container,
@@ -145,15 +194,6 @@
   background-color: green;
 }
 
-@media only screen and (max-width: 1400px) {
-  .linha-vertical {
-    width: 0px;
-    margin: 0;
-    padding: 0;
-  }
-
-}
-
 #form {
   padding: 20px;
 }
@@ -169,6 +209,15 @@
   width: 100%;
   min-height: 30vh;
   margin-bottom: 5%;
+}
+
+@media only screen and (max-width: 768px) {
+  .linha-vertical {
+    width: 0px;
+    margin: 0;
+    padding: 0;
+  }
+
 }
 
 /* #endregion */
@@ -219,9 +268,10 @@
   text-align: center;
 
 }
+
 /* #endregion */
-  height: 30vh;
-}
+
+/* #region produto */
 
 #produto {
   padding: 20px;
@@ -237,7 +287,7 @@
 .Imagem img {
   max-width: 100%;
 }
-        
+
 .Imagem img {
   width: 100%;
   max-width: 400px;
@@ -248,3 +298,5 @@
   margin-bottom: 15px;
   color: #222;
 }
+
+/* #endregion */
