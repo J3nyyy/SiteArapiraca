@@ -1,33 +1,96 @@
-*{
+* {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-#header{
-    background-color: white;
-    margin: 10px;
+    box-sizing: border-box;
 }
 
-hr{
+#header {
+    background-color: white;
+    margin: 10px;
+    position: relative;
+}
+
+hr {
     margin: 0;
     padding: 0;
 }
 
-nav{
-display: flex;
-height: 10vh; 
-justify-content: space-between;
+nav {
+    display: flex;
+    height: 10vh; 
+    justify-content: space-between;
+    align-items: center;
 }
-#itens{
+
+#itens {
     margin-right: 10%;
     display: flex;
-align-items: center;
-
+    align-items: center;
 }
-a{
+
+a {
     padding: 20px;
     text-decoration: none;
     color: inherit;
-    
 }
-a:active{
-    color: green;     
+
+a:active {
+    color: green;
+}
+
+/* Estilos do menu hamburguer */
+#hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+#hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #333;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Estilos para mobile */
+@media (max-width: 768px) {
+    #hamburger {
+        display: flex;
+    }
+    
+    #itens {
+        position: fixed;
+        top: 10vh;
+        left: 0;
+        width: 100%;
+        height: 0;
+        margin: 0;
+        background-color: white;
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+        transition: height 0.3s ease;
+        z-index: 1000;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    }
+    
+    #itens.active {
+        height: calc(100vh - 10vh);
+        padding: 20px 0;
+    }
+    
+    #itens a {
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+    }
+    
+    nav {
+        padding: 0 10px;
+    }
 }
