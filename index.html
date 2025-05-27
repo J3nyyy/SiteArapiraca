@@ -24,7 +24,10 @@
 </body>
 
 </html> -->
-<!DOCTYPE html>
+
+<!-- Versão 2 -->
+
+<!-- <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -106,7 +109,7 @@
             }
         });
 
-        // Carregar a primeira página inicialmente
+        //Carregar a primeira página inicialmente
         window.onload = () => {
             loadPage(currentPage);
         };
@@ -121,4 +124,194 @@
     </script>
 </body>
 
+</html> -->
+
+<!-- Versão 3 -->
+ 
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arapiraca</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: sans-serif;
+        }
+
+        #content {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            transition: opacity 0.6s ease;
+            overflow-y: auto; /* Permite scroll interno */
+        }
+
+        .nav-link {
+            color: black;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .nav-link.active {
+            color: green;
+            font-weight: bold;
+        }
+
+        /* Indicador de scroll */
+        .scroll-hint {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .scroll-hint.visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header"></div>
+    <script src="LoadHeader.js"></script>
+    <div id="content">Carregando...</div>
+    <div class="scroll-hint">Role para navegar</div>
+
+    <script>
+        const pages = ['home.html', 'headline.html', 'Galeria.html', 'Produtos.html', 'sobre.html', 'Contato.html'];
+        let currentPage = 0;
+        const contentDiv = document.getElementById('content');
+        let isLoading = false;
+        let scrollHint = document.querySelector('.scroll-hint');
+        let scrollTimeout;
+
+        function loadPage(index) {
+            if (index < 0 || index >= pages.length || isLoading) return;
+            isLoading = true;
+            contentDiv.style.opacity = 0;
+
+            setTimeout(() => {
+                fetch(pages[index])
+                    .then(response => response.text())
+                    .then(html => {
+                        contentDiv.innerHTML = html;
+                        contentDiv.scrollTop = 0; // Reseta o scroll ao carregar nova página
+                        contentDiv.style.opacity = 1;
+                        currentPage = index;
+                        document.querySelectorAll('.nav-link').forEach(link => {
+                            link.classList.remove('active');
+                            if (link.dataset.page === pages[index]) {
+                                link.classList.add('active');
+                            }
+                        });
+                        isLoading = false;
+                        
+                        // Mostra hint se o conteúdo couber na tela
+                        checkContentSize();
+                    });
+            }, 600);
+        }
+
+        function checkContentSize() {
+            // Verifica se o conteúdo atual precisa de scroll interno
+            const needsInternalScroll = contentDiv.scrollHeight > contentDiv.clientHeight;
+            
+            if (!needsInternalScroll) {
+                showScrollHint();
+            }
+        }
+
+        function showScrollHint() {
+            clearTimeout(scrollTimeout);
+            scrollHint.classList.add('visible');
+            scrollTimeout = setTimeout(() => {
+                scrollHint.classList.remove('visible');
+            }, 2000);
+        }
+
+        window.addEventListener('wheel', (e) => {
+            if (isLoading) return;
+            
+            const isScrollingDown = e.deltaY > 0;
+            const isAtTop = contentDiv.scrollTop === 0;
+            const isAtBottom = contentDiv.scrollTop + contentDiv.clientHeight >= contentDiv.scrollHeight - 5;
+            
+            // Se o conteúdo não precisa de scroll interno OU
+            // se estiver no topo e scroll para cima OU
+            // se estiver no fundo e scroll para baixo
+            if (contentDiv.scrollHeight <= contentDiv.clientHeight || 
+                (isAtTop && !isScrollingDown) || 
+                (isAtBottom && isScrollingDown)) {
+                
+                // Navega entre páginas
+                if (isScrollingDown && currentPage < pages.length - 1) {
+                    loadPage(currentPage + 1);
+                } else if (!isScrollingDown && currentPage > 0) {
+                    loadPage(currentPage - 1);
+                }
+            }
+            // Caso contrário, permite o scroll interno normal
+        });
+
+        // Touch events para dispositivos móveis
+        let touchStartY = 0;
+        
+        contentDiv.addEventListener('touchstart', (e) => {
+            touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+        
+        contentDiv.addEventListener('touchmove', (e) => {
+            if (isLoading) return;
+            
+            const touchY = e.touches[0].clientY;
+            const deltaY = touchStartY - touchY;
+            const isScrollingDown = deltaY > 0;
+            const isAtTop = contentDiv.scrollTop === 0;
+            const isAtBottom = contentDiv.scrollTop + contentDiv.clientHeight >= contentDiv.scrollHeight - 5;
+            
+            if (contentDiv.scrollHeight <= contentDiv.clientHeight || 
+                (isAtTop && !isScrollingDown) || 
+                (isAtBottom && isScrollingDown)) {
+                
+                e.preventDefault();
+                if (isScrollingDown && currentPage < pages.length - 1) {
+                    loadPage(currentPage + 1);
+                } else if (!isScrollingDown && currentPage > 0) {
+                    loadPage(currentPage - 1);
+                }
+            }
+        }, { passive: false });
+
+        // Carregar a primeira página inicialmente
+        window.onload = () => {
+            loadPage(currentPage);
+        };
+        
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('nav-link')) {
+                e.preventDefault();
+                const page = e.target.dataset.page;
+                const index = pages.indexOf(page);
+                if (index !== -1) loadPage(index);
+            }
+        });
+    </script>
+</body>
 </html>
