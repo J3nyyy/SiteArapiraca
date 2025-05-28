@@ -1,5 +1,5 @@
 // 1. Primeiro carrega o header
-fetch("HTML/COMPONENTS/header.html")
+fetch("header.html")
   .then(response => response.text())
   .then(data => {
     document.getElementById("header").innerHTML = data;
