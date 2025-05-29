@@ -5,32 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produtos</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /*temporariamente usavel*/
+        .produto-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
 
+        .texto {
+            flex: 1;
+        }
+
+        .Imagem {
+            flex: 1;
+            text-align: right; 
+            max-width: 400px;
+        }
+
+        .Imagem img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
-     <div id="header"></div>
+    <div id="header"></div>
+
     <section id="produto">
         <h2>PRODUTOS</h2>
 
-    <div class="produto-grid">
-        <div class="texto"> 
-        <h3>Produto</h3>
-        <p>Descrição</p>
-        </div>
-    </div>
-       
-        <div class="Imagem">
-            
-        </div>
-        <!--<h3>Pedaços</h3>
-        <p>Descrever os detalhes sobre o produto</p>
+        <div class="produto-grid">
+            <div class="texto"> 
+                <h3>Produto</h3>
+                <p>Descrição</p>
+            </div>
 
-        <h3>Palhas</h3>
-        <p>Descrever os detalhes sobre o produto</p>
-
-        <h3>Cordas</h3>
-        <p>Descrever os detalhes sobre o produto</p>-->
+            <div class="Imagem">
+                <img id="frame" src="Imagens/Imagens novas/pedacos.png" alt="ImagemPedacosProd" />
+            </div>
+        </div>
     </section>
+
     <script src="LoadHeader.js"></script>
 </body>
 </html>
