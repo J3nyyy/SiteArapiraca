@@ -234,6 +234,11 @@
 
 /* #region Missão Visão e Valores */
 
+#missão
+{
+   min-height: 80vh;
+}
+
 .missao-visao-valores h3 {
   margin-bottom: 15px;
   color: #222;
