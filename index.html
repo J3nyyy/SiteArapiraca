@@ -195,123 +195,92 @@
     <div class="scroll-hint">Role para navegar</div>
 
     <script> 
-        const pages = ['HTML/Pages/home.html', 'HTML/Pages/headline.html', 'HTML/Pages/Galeria.html', 'HTML/Pages/Produtos.html', 'HTML/Pages/sobre.html', 'HTML/Pages/Contato.html'];
-        let currentPage = 0;
-        const contentDiv = document.getElementById('content');
-        let isLoading = false;
-        let scrollHint = document.querySelector('.scroll-hint');
-        let scrollTimeout;
+           const pages = [
+        'HTML/Pages/home.html',
+        'HTML/Pages/headline.html',
+        'HTML/Pages/Galeria.html',
+        'HTML/Pages/Produtos.html',
+        'HTML/Pages/sobre.html',
+        'HTML/Pages/Contato.html'
+    ];
 
-        function loadPage(index) {
-            if (index < 0 || index >= pages.length || isLoading) return;
-            isLoading = true;
-            contentDiv.style.opacity = 0;
+    let currentPage = 0;
+    let isLoading = false;
 
-            setTimeout(() => {
-                fetch(pages[index])
-                    .then(response => response.text())
-                    .then(html => {
-                        contentDiv.innerHTML = html;
-                        contentDiv.scrollTop = 0; // Reseta o scroll ao carregar nova página
-                        contentDiv.style.opacity = 1;
-                        currentPage = index;
-                        document.querySelectorAll('.nav-link').forEach(link => {
-                            link.classList.remove('active');
-                            if (link.dataset.page === pages[index]) {
-                                link.classList.add('active');
-                            }
-                        });
-                        isLoading = false;
-                        
-                        // Mostra hint se o conteúdo couber na tela
-                        checkContentSize();
-                    });
-            }, 600);
-        }
+    const contentDiv = document.getElementById('content');
+    const scrollHint = document.querySelector('.scroll-hint');
 
-        function checkContentSize() {
-            // Verifica se o conteúdo atual precisa de scroll interno
-            const needsInternalScroll = contentDiv.scrollHeight > contentDiv.clientHeight;
-            
-            if (!needsInternalScroll) {
-                showScrollHint();
-            }
-        }
+    function setActiveNavLink(pagePath) {
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.toggle('active', link.dataset.page === pagePath);
+        });
+    }
 
-        function showScrollHint() {
-            clearTimeout(scrollTimeout);
-            scrollHint.classList.add('visible');
-            scrollTimeout = setTimeout(() => {
-                scrollHint.classList.remove('visible');
-            }, 2000);
-        }
+    function showScrollHintIfNeeded() {
+        if (!scrollHint) return;
+        const needsScroll = contentDiv.scrollHeight > contentDiv.clientHeight;
+        scrollHint.style.display = needsScroll ? 'none' : 'block';
+    }
 
+    function fadeOutContent(callback) {
+        contentDiv.style.opacity = 0;
+        setTimeout(callback, 400); // tempo menor pro fadeOut
+    }
+
+    function fadeInContent() {
+        contentDiv.style.opacity = 1;
+    }
+
+    function loadPage(index) {
+        if (isLoading || index < 0 || index >= pages.length) return;
+        isLoading = true;
+
+        fadeOutContent(() => {
+            fetch(pages[index])
+                .then(response => {
+                    if (!response.ok) throw new Error('Erro ao carregar página');
+                    return response.text();
+                })
+                .then(html => {
+                    contentDiv.innerHTML = html;
+                    contentDiv.scrollTop = 0;
+                    fadeInContent();
+                    currentPage = index;
+                    setActiveNavLink(pages[index]);
+                    showScrollHintIfNeeded();
+                })
+                .catch(error => {
+                    contentDiv.innerHTML = `<p>Erro ao carregar a página: ${error.message}</p>`;
+                    fadeInContent();
+                })
+                .finally(() => {
+                    isLoading = false;
+                });
+        });
+    }
+
+    // Opcional: navegação via seta para baixo/cima ou swipe
+    function initScrollNavigation() {
         window.addEventListener('wheel', (e) => {
             if (isLoading) return;
-            
-            const isScrollingDown = e.deltaY > 0;
-            const isAtTop = contentDiv.scrollTop === 0;
-            const isAtBottom = contentDiv.scrollTop + contentDiv.clientHeight >= contentDiv.scrollHeight - 5;
-            
-            // Se o conteúdo não precisa de scroll interno OU
-            // se estiver no topo e scroll para cima OU
-            // se estiver no fundo e scroll para baixo
-            if (contentDiv.scrollHeight <= contentDiv.clientHeight || 
-                (isAtTop && !isScrollingDown) || 
-                (isAtBottom && isScrollingDown)) {
-                
-                // Navega entre páginas
-                if (isScrollingDown && currentPage < pages.length - 1) {
-                    loadPage(currentPage + 1);
-                } else if (!isScrollingDown && currentPage > 0) {
-                    loadPage(currentPage - 1);
-                }
-            }
-            // Caso contrário, permite o scroll interno normal
+            if (e.deltaY > 50) loadPage(currentPage + 1);
+            else if (e.deltaY < -50) loadPage(currentPage - 1);
         });
+    }
 
-        // Touch events para dispositivos móveis
-        let touchStartY = 0;
-        
-        contentDiv.addEventListener('touchstart', (e) => {
-            touchStartY = e.touches[0].clientY;
-        }, { passive: true });
-        
-        contentDiv.addEventListener('touchmove', (e) => {
-            if (isLoading) return;
-            
-            const touchY = e.touches[0].clientY;
-            const deltaY = touchStartY - touchY;
-            const isScrollingDown = deltaY > 0;
-            const isAtTop = contentDiv.scrollTop === 0;
-            const isAtBottom = contentDiv.scrollTop + contentDiv.clientHeight >= contentDiv.scrollHeight - 5;
-            
-            if (contentDiv.scrollHeight <= contentDiv.clientHeight || 
-                (isAtTop && !isScrollingDown) || 
-                (isAtBottom && isScrollingDown)) {
-                
-                e.preventDefault();
-                if (isScrollingDown && currentPage < pages.length - 1) {
-                    loadPage(currentPage + 1);
-                } else if (!isScrollingDown && currentPage > 0) {
-                    loadPage(currentPage - 1);
-                }
-            }
-        }, { passive: false });
+    // Inicialização
+    document.addEventListener('DOMContentLoaded', () => {
+        loadPage(currentPage);
+        initScrollNavigation();
 
-        // Carregar a primeira página inicialmente
-        window.onload = () => {
-            loadPage(currentPage);
-        };
-        
-        document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('nav-link')) {
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
                 e.preventDefault();
-                const page = e.target.dataset.page;
-                const index = pages.indexOf(page);
-                if (index !== -1) loadPage(index);
-            }
+                const pageIndex = pages.indexOf(link.dataset.page);
+                if (pageIndex !== -1) loadPage(pageIndex);
+            });
         });
+    });
     </script>
 </body>
 </html>
