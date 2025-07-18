@@ -1,0 +1,83 @@
+
+
+#contato {
+  min-height: 80vh;
+}
+
+#formulario {
+  object-fit: cover;
+  gap: 0;
+}
+
+#contato-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+#mensagem {
+  resize: none;
+  min-height: 30%;
+}
+
+#contato-conteudo {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  /* padding: 20px; */
+}
+
+#contato-container,
+
+#contato-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+#formulario input,
+#formulario textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+}
+
+
+#contato h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.linha-vertical {
+  width: 1px;
+  background-color: green;
+}
+
+#form {
+  padding: 20px;
+}
+
+#contato-mapa {
+  margin: 20px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+#mapa {
+  width: 100%;
+  min-height: 30vh;
+  margin-bottom: 5%;
+}
+
+@media only screen and (max-width: 768px) {
+  .linha-vertical {
+    width: 0px;
+    margin: 0;
+    padding: 0;
+  }
+
+}

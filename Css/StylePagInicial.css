@@ -1,0 +1,87 @@
+* {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#content {
+ min-height: 100vh;
+  /* ocupa a altura da tela */
+  width: 100%;
+
+  padding: 20px;
+
+  display: flex;
+
+  /* position: relative; */
+  flex-direction: column;
+  /* empilha os itens verticalmente */
+  justify-content: center;
+  /* centraliza verticalmente */
+  align-items: center;
+  /* centraliza horizontalmente */
+  text-align: center;
+  /* para o texto ficar centralizado */
+  gap: 20px;
+  /* espaço entre a imagem e o título */
+  background-color: #F2F2F2;
+}
+
+.leavesBackground {
+  width: 80vh;
+  position: absolute;
+  z-index: 2;
+}
+
+
+.title {
+  display: block;
+  width: 100%;
+  /* ocupa toda a largura da viewport */
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  /* centraliza o texto dentro da largura total */
+  background-color: rgba(255, 255, 255, 0.6);
+  /* ou qualquer cor que quiser */
+  font-size: xx-large;
+}
+
+.linefill {
+  z-index: 2;
+}
+
+.linegreen {
+  border-color: lightgreen;
+  margin: 5px;
+  min-width: 25%;
+  justify-self: center;
+
+}
+
+@media only screen and (max-width: 768px) {
+  
+  
+.leavesBackground {
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+}
+
+#content {
+  height: 80vh;
+  /* ocupa a altura da tela */
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  /* empilha os itens verticalmente */
+  justify-content: center;
+  /* centraliza verticalmente */
+  align-items: center;
+  /* centraliza horizontalmente */
+  text-align: center;
+  /* para o texto ficar centralizado */
+  gap: 20px;
+  /* espaço entre a imagem e o título */
+  background-color: #F2F2F2;
+}
+
+}

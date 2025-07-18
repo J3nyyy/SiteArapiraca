@@ -1,0 +1,55 @@
+* {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#quem-somos {
+  padding: 20px;
+  background-color: #f4f4f4;
+  min-height: 100vh;
+
+}
+
+.grid-qs {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.side{
+  margin: 50px;
+}
+/* #column {
+  max-width: 50%;
+} */
+
+#column img {
+  width: 60vh;
+}
+
+#desc {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+@media only screen and (max-width: 768px) {
+  .grid-qs {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #column {
+    width: 90vh;
+  }
+
+  .side {
+    min-width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 5vh;
+    
+  } 
+
+  
+
+
+}
