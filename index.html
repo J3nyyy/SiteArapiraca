@@ -1,286 +1,97 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arapiraca</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-    <div id="header"></div>
-    
-    <section id="content">
-
-        <img class="leavesBackground" src="Imagens/Sem título (2).png" alt="" srcset="">
-        <div class="linefill" >
-            <p class="title">TABACO É O PASSADO, PRESENTE E FUTURO</p>
-            <hr class="linegreen">
-        </div>
-            
-    </section>
-    <script src="LoadHeader.js"></script>
-</body>
-
-</html> -->
-
-<!-- Versão 2 -->
-
-<!-- <!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Arapiraca</title>
-    <style>
-        body,
-        html {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            font-family: sans-serif;
-        }
-
-        #content {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 1;
-            transition: opacity 0.6s ease;
-        }
-
-        .nav-link {
-            color: black;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        .nav-link.active {
-            color: green;
-            font-weight: bold;
-        }
-    </style>
-</head>
-
-<body>
-    <div id="header"></div>
-    <script src="LoadHeader.js"></script>
-    <div id="content">Carregando...</div>
-
-    <script>
-        const pages = ['home.html', 'headline.html', 'Galeria.html', 'Produtos.html', 'sobre.html', 'Contato.html'];
-        let currentPage = 0;
-        const contentDiv = document.getElementById('content');
-        let isLoading = false;
-
-        function loadPage(index) {
-            if (index < 0 || index >= pages.length || isLoading) return;
-            isLoading = true;
-            contentDiv.style.opacity = 0;
-
-            setTimeout(() => {
-                fetch(pages[index])
-                    .then(response => response.text())
-                    .then(html => {
-                        contentDiv.innerHTML = html;
-                        contentDiv.style.opacity = 1;
-                        currentPage = index;
-                        document.querySelectorAll('.nav-link').forEach(link => {
-                            link.classList.remove('active');
-                            if (link.dataset.page === pages[index]) {
-                                link.classList.add('active');
-                            }
-                        });
-                        isLoading = false;
-                    });
-            }, 600);
-        }
-
-        window.addEventListener('wheel', (e) => {
-            if (isLoading) return;
-            if (e.deltaY > 0 && currentPage < pages.length - 1) {
-                loadPage(currentPage + 1);
-            } else if (e.deltaY < 0 && currentPage > 0) {
-                loadPage(currentPage - 1);
-            }
-        });
-
-        //Carregar a primeira página inicialmente
-        window.onload = () => {
-            loadPage(currentPage);
-        };
-        document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('nav-link')) {
-                e.preventDefault();
-                const page = e.target.dataset.page;
-                const index = pages.indexOf(page);
-                if (index !== -1) loadPage(index);
-            }
-        });
-    </script>
-</body>
-
-</html> -->
-
-<!-- Versão 3 -->
- 
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Arapiraca</title>
-    <style>
-        body,
-        html {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            font-family: sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arapiraca</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }
 
-        #content {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 1;
-            transition: opacity 0.6s ease;
-            overflow-y: auto; /* Permite scroll interno */
-        }
+    #content {
+      width: 100vw;
+      min-height: 80vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 1;
+      transition: opacity 0.6s ease;
+      padding: 20px;
+    }
 
-        .nav-link {
-            color: black;
-            text-decoration: none;
-            margin: 0 10px;
-        }
+    .nav-link {
+      color: black;
+      text-decoration: none;
+      margin: 0 10px;
+      cursor: pointer;
+    }
 
-        .nav-link.active {
-            color: green;
-            font-weight: bold;
-        }
-
-        /* Indicador de scroll */
-        .scroll-hint {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0,0,0,0.5);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 12px;
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
-        }
-
-        .scroll-hint.visible {
-            opacity: 1;
-        }
-    </style>
+    .nav-link.active {
+      color: green;
+      font-weight: bold;
+    }
+  </style>
 </head>
-
 <body>
-    <div id="header"></div>
-    <script src="JS/LoadHeader.js"></script>
-    <div id="content">Carregando...</div>
-    <div class="scroll-hint">Role para navegar</div>
+  <div id="header"></div>
+  <div id="content">Carregando...</div>
 
-    <script> 
-           const pages = [
-        './HTML/PAGES/home.html',
-        './HTML/PAGES/headline.html',
-        './HTML/PAGES/Galeria.html',
-        './HTML/PAGES/Produtos.html',
-        './HTML/PAGES/sobre.html',
-        './HTML/PAGES/Contato.html'
+  <script src="JS/LoadHeader.js"></script>
+  <script>
+    const pages = [
+      './HTML/PAGES/home.html',
+      './HTML/PAGES/headline.html',
+      './HTML/PAGES/Galeria.html',
+      './HTML/PAGES/Produtos.html',
+      './HTML/PAGES/sobre.html',
+      './HTML/PAGES/Contato.html'
     ];
-
+    
     let currentPage = 0;
-    let isLoading = false;
-
     const contentDiv = document.getElementById('content');
-    const scrollHint = document.querySelector('.scroll-hint');
-
-    function setActiveNavLink(pagePath) {
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.classList.toggle('active', link.dataset.page === pagePath);
-        });
-    }
-
-    function showScrollHintIfNeeded() {
-        if (!scrollHint) return;
-        const needsScroll = contentDiv.scrollHeight > contentDiv.clientHeight;
-        scrollHint.style.display = needsScroll ? 'none' : 'block';
-    }
-
-    function fadeOutContent(callback) {
-        contentDiv.style.opacity = 0;
-        setTimeout(callback, 400); // tempo menor pro fadeOut
-    }
-
-    function fadeInContent() {
-        contentDiv.style.opacity = 1;
-    }
 
     function loadPage(index) {
-        if (isLoading || index < 0 || index >= pages.length) return;
-        isLoading = true;
+      if (index < 0 || index >= pages.length) return;
 
-        fadeOutContent(() => {
-            fetch(pages[index])
-                .then(response => {
-                    if (!response.ok) throw new Error('Erro ao carregar página');
-                    return response.text();
-                })
-                .then(html => {
-                    contentDiv.innerHTML = html;
-                    contentDiv.scrollTop = 0;
-                    fadeInContent();
-                    currentPage = index;
-                    setActiveNavLink(pages[index]);
-                    showScrollHintIfNeeded();
-                })
-                .catch(error => {
-                    contentDiv.innerHTML = `<p>Erro ao carregar a página: ${error.message}</p>`;
-                    fadeInContent();
-                })
-                .finally(() => {
-                    isLoading = false;
-                });
-        });
+      contentDiv.style.opacity = 0;
+      setTimeout(() => {
+        fetch(pages[index])
+          .then(res => res.text())
+          .then(html => {
+            contentDiv.innerHTML = html;
+            contentDiv.scrollTop = 0;
+            contentDiv.style.opacity = 1;
+            currentPage = index;
+            updateActiveLink(pages[index]);
+          })
+          .catch(() => {
+            contentDiv.innerHTML = `<p>Erro ao carregar página.</p>`;
+            contentDiv.style.opacity = 1;
+          });
+      }, 300);
     }
 
-    // Opcional: navegação via seta para baixo/cima ou swipe
-    function initScrollNavigation() {
-        window.addEventListener('wheel', (e) => {
-            if (isLoading) return;
-            if (e.deltaY > 50) loadPage(currentPage + 1);
-            else if (e.deltaY < -50) loadPage(currentPage - 1);
-        });
+    function updateActiveLink(pagePath) {
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.toggle('active', link.dataset.page === pagePath);
+      });
     }
 
-    // Inicialização
     document.addEventListener('DOMContentLoaded', () => {
-        loadPage(currentPage);
-        initScrollNavigation();
+      loadPage(currentPage);
 
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const pageIndex = pages.indexOf(link.dataset.page);
-                if (pageIndex !== -1) loadPage(pageIndex);
-            });
-        });
+      document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('nav-link')) {
+          e.preventDefault();
+          const page = e.target.dataset.page;
+          const index = pages.indexOf(page);
+          if (index !== -1) loadPage(index);
+        }
+      });
     });
-    </script>
+  </script>
 </body>
 </html>

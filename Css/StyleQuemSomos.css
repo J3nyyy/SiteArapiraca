@@ -1,55 +1,73 @@
-* {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-#quem-somos {
-  padding: 20px;
-  background-color: #f4f4f4;
-  min-height: 100vh;
-
-}
-
-.grid-qs {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.side{
-  margin: 50px;
-}
-/* #column {
-  max-width: 50%;
-} */
-
-#column img {
-  width: 60vh;
-}
-
-#desc {
-  text-align: justify;
-  text-justify: inter-word;
-}
-
-@media only screen and (max-width: 768px) {
-  .grid-qs {
-    display: flex;
-    flex-direction: column;
-  }
-
-  #column {
-    width: 90vh;
-  }
-
-  .side {
-    min-width: 100%;
+/* Reset básico */
+body, html {
     margin: 0;
     padding: 0;
-    margin-bottom: 5vh;
-    
-  } 
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
 
-  
+/* Estilo da seção */
+#quem-somos {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+}
 
+/* Layout em grid */
+.grid-qs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
 
+/* Colunas */
+#column {
+    flex: 1 1 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Título */
+#column h1 {
+    font-size: 32px;
+    color: #2e2e2e;
+    margin-bottom: 20px;
+}
+
+/* Texto */
+#desc p {
+    font-size: 18px;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Imagem */
+#column img.side {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto; /* centraliza horizontalmente */
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .grid-qs {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    #column {
+        width: 100%;
+        text-align: center;
+    }
+
+    #desc p {
+        text-align: justify;
+    }
 }
