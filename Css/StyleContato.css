@@ -1,7 +1,9 @@
 
 
 #contato {
-  min-height: 80vh;
+  height: 80vh;
+  padding: 5%;
+  text-align: center;
 }
 
 #formulario {
@@ -15,6 +17,10 @@
   align-items: center;
   gap: 20px;
   padding: 20px;
+  flex-wrap: wrap;
+}
+#contato-card{
+  min-width: 30vw;
 }
 
 #mensagem {
@@ -26,6 +32,7 @@
   display: flex;
   justify-content: center;
   gap: 40px;
+  align-items: center;
   flex-wrap: wrap;
   /* padding: 20px; */
 }
@@ -39,7 +46,7 @@
 
 #formulario input,
 #formulario textarea {
-  width: 100%;
+  width: 80vw;
   padding: 8px;
   margin-bottom: 12px;
   box-sizing: border-box;
@@ -68,12 +75,13 @@
 }
 
 #mapa {
-  width: 100%;
-  min-height: 30vh;
-  margin-bottom: 5%;
+  width: 90vw;
+  height: 30vh;
+  padding: 10px;
+  
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1024px) {
   .linha-vertical {
     width: 0px;
     margin: 0;

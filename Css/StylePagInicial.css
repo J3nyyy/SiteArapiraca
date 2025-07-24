@@ -26,7 +26,7 @@
 }
 
 .leavesBackground {
-  width: 80vh;
+  width: 60vw;
   position: absolute;
   z-index: 2;
 }

@@ -70,4 +70,7 @@ body, html {
     #desc p {
         text-align: justify;
     }
+    img{
+      width: 80vh;
+    }
 }
