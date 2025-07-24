@@ -45,7 +45,7 @@ a:active {
     width: 30px;
     height: 21px;
     cursor: pointer;
-    margin-right: 20px;
+    margin-right: 5vh;
 }
 
 #hamburger span {
@@ -92,5 +92,8 @@ a:active {
     
     nav {
         padding: 0 10px;
+    }
+    #icon{
+        width: 25vh;
     }
 }
