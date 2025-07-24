@@ -2,9 +2,23 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#missão
-{
-   min-height: 80vh;
+#missão {
+  padding: 80px 0 40px 0; /* aumentou o padding-top para 80px */
+  box-sizing: border-box;
+}
+
+body {
+  overflow-y: auto;
+  background-color: aliceblue;
+}
+
+
+.missao-visao-valores-container { 
+  min-height: 80vh; /* ocupa pelo menos 100% da altura da tela */
+  display: center;
+  flex-direction: column;
+  margin-top: 15vh;
+  margin-bottom: 10vh;
 }
 
 .missao-visao-valores h2 {
@@ -12,8 +26,13 @@
   margin: 0 auto 40px auto;
   text-align: center;
   font-weight: bold;
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   display: block;
+
+}
+
+.missao-visao-valores {
+  text-align: center; 
 }
 
 
@@ -21,7 +40,7 @@
   width: 100%;
   margin: 20px auto;
   text-align: center;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: bold;
 }
 
@@ -30,11 +49,14 @@
   color: #555;
   line-height: 1.5;
   margin-top: 0;
+  font-size: 1.1rem;
+  text-align: center;
 }
 
 .missao-visao-valores ul {
   padding-left: 20px;
   text-align: left;
+  line-height: 1.5;
 }
 
 

@@ -4,8 +4,8 @@
 
 #produto {
   padding: 20px;
+  
 }
-
 
 
 .produto-grid {
@@ -13,6 +13,8 @@
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   align-items: center;
+  background-color: white;
+  min-height: 100vh; /* ocupa toda a altura da tela */
 }
 
 .Imagem img {
