@@ -7,7 +7,7 @@
   /* ocupa a altura da tela */
   width: 100%;
 
-  padding: 20px;
+  padding: 20px 20px 20px 40px;
 
   display: flex;
 
@@ -20,7 +20,7 @@
   /* centraliza horizontalmente */
   text-align: center;
   /* para o texto ficar centralizado */
-  gap: 20px;
+  /* gap: 20px; */
   /* espaço entre a imagem e o título */
   background-color: #F2F2F2;
 }

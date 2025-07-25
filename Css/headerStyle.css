@@ -93,7 +93,7 @@ a:active {
     nav {
         padding: 0 10px;
     }
-    #icon{
-        width: 25vh;
+    .icon{
+        width: 15vw;
     }
 }
