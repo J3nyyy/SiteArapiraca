@@ -3,18 +3,18 @@
 }
 
 #missão {
-  padding: 80px 0 40px 0; /* aumentou o padding-top para 80px */
+  /* padding: 80px 0 40px 0;  */
   box-sizing: border-box;
 }
 
 body {
-  overflow-y: auto;
-  background-color: aliceblue;
+  /* overflow-y: auto; */
+  background-color: white;
 }
 
 
 .missao-visao-valores-container { 
-  min-height: 80vh; /* ocupa pelo menos 100% da altura da tela */
+  /* min-height: 80vh; ocupa pelo menos 80% da altura da tela */
   display: center;
   flex-direction: column;
   margin-top: 15vh;
@@ -22,8 +22,8 @@ body {
 }
 
 .missao-visao-valores h2 {
-  width: 100%;
-  margin: 0 auto 40px auto;
+  /* width: 100%; */
+  /* margin: 0 auto 40px auto; */
   text-align: center;
   font-weight: bold;
   font-size: 1.8rem;
@@ -37,7 +37,7 @@ body {
 
 
 .missao-visao-valores h3 {
-  width: 100%;
+  /* width: 100%; */
   margin: 20px auto;
   text-align: center;
   font-size: 1.6rem;
@@ -55,7 +55,7 @@ body {
 
 .missao-visao-valores ul {
   padding-left: 20px;
-  text-align: left;
+  text-align: center;
   line-height: 1.5;
 }
 
@@ -66,25 +66,20 @@ body {
   justify-content: center;
 }
 
-.missao {
+.mvv > div{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+
+.missao ,.visao , .valores{
   width: 20%;
   margin: 10px;
   text-align: center;
 }
 
-.visao {
-  width: 20%;
-  margin: 10px;
-  text-align: center;
-
-}
-
-.valores {
-  width: 20%;
-  margin: 10px;
-  text-align: center;
-
-}
 
 .icone-mvv,
 .icone-mvv2,
@@ -93,8 +88,8 @@ body {
   height: auto;
   max-width: 100%;
   display: block;
-  margin: 0 auto 10px auto;
-   margin-bottom: 20px;
+  /* margin: 0 auto 10px auto;
+   margin-bottom: 20px; */
 }
 
 @media only screen and (max-width: 768px) {
