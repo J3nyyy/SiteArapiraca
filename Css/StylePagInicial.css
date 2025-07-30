@@ -3,11 +3,10 @@
 }
 
 #content {
- min-height: 100vh;
+ min-height: 80vh;
   /* ocupa a altura da tela */
   width: 100%;
 
-  padding: 20px 20px 20px 40px;
 
   display: flex;
 
@@ -26,7 +25,7 @@
 }
 
 .leavesBackground {
-  width: 60vw;
+  width: 50vw;
   position: absolute;
   z-index: 2;
 }
@@ -34,7 +33,7 @@
 
 .title {
   display: block;
-  width: 100%;
+  min-width: 100vw;
   /* ocupa toda a largura da viewport */
   margin: 0;
   padding: 0;
@@ -47,6 +46,7 @@
 
 .linefill {
   z-index: 2;
+
 }
 
 .linegreen {

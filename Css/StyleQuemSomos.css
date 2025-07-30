@@ -10,6 +10,7 @@ body, html {
 #quem-somos {
     padding: 40px 20px;
     background-color: #f9f9f9;
+    min-width: 100vw;
 }
 
 /* Layout em grid */
