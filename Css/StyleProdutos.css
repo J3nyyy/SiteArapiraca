@@ -1,36 +1,96 @@
 * {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 #produto {
-  padding: 20px;
-  
+  text-align: center;
+  padding: 20px 0; 
+  background: #fff;
 }
 
+.titulo-container {
+  text-align: center;
+  margin-bottom: 10px; /* espaço entre o título+linha e o bloco cinza */
+}
 
+.titulo-produto {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0; 
+}
 
+.linha-verde {
+  display: block;
+  width: 100px;
+  height: 3px;
+  background: #04be52;
+  margin: 4px auto 0 auto; 
+  border-radius: 3px;
+}
+
+/* grid */
 .produto-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  align-items: center;
-  background-color: rgb(214, 212, 212);
-  min-height: 100vh;  /* ocupa altura da tela */
-  width: 100vw;       /* ocupa toda a largura da tela */
+  background-color: #e0e0e0;
+  width: 100vw;
+  margin: 40px 0 0 0;
+  padding: 60px 20px;
+  box-sizing: border-box;
+
+  display: flex;            /* deixa flex pra alinhar internamente */
+  justify-content: center;  /* centraliza horizontalmente */
 }
 
-.Imagem img {
-  max-width: 100%;
+.produto-grid > .texto,
+.produto-grid > .Imagem {
+  max-width: 600px;         /* metade do 1200px dividido entre os dois */
+  flex: 1 1 0;              /* para crescer e encolher proporcional */
+  text-align: center;
 }
 
+/* texto */
+.texto {
+  text-align: left;
+}
+
+.texto h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #111;
+}
+
+.texto p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* imagem */
 .Imagem img {
   width: 100%;
-  max-width: 400px;
+  max-width: 350px;
   border-radius: 8px;
+  display: block;
+  margin: 0 auto;
 }
 
-.texto {
-  margin-bottom: 15px;
-  color: #222;
-  padding: 30px;
+/* responsivo */
+@media (max-width: 768px) {
+  .produto-grid {
+    flex-direction: column;
+    padding: 30px 20px;
+  }
+
+  .produto-grid > .texto,
+  .produto-grid > .Imagem {
+    max-width: 100%;
+    flex: none;
+  }
+
+  .texto {
+    text-align: center;
+  }
 }
+
