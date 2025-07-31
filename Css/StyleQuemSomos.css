@@ -71,7 +71,10 @@ body, html {
     #desc p {
         text-align: justify;
     }
-    img{
+    /* img{
       width: 80vh;
-    }
+    } alterar para side*/
+     .side{
+        width: 80vh;
+     }
 }
