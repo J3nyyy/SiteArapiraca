@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Arapiraca</title>
   <style>
-    body, html {
+    body,
+    html {
       margin: 0;
       padding: 0;
       font-family: sans-serif;
@@ -35,6 +37,7 @@
     }
   </style>
 </head>
+
 <body>
   <div id="header"></div>
   <div id="content">Carregando...</div>
@@ -49,7 +52,7 @@
       './HTML/PAGES/sobre.html',
       './HTML/PAGES/Contato.html'
     ];
-    
+
     let currentPage = 0;
     const contentDiv = document.getElementById('content');
 
@@ -66,12 +69,43 @@
             contentDiv.style.opacity = 1;
             currentPage = index;
             updateActiveLink(pages[index]);
+
+            // se for pagina contato, ele carrega o formulario
+            if (pages[index].includes('Contato.html')) {
+              setupForm();
+            }
           })
           .catch(() => {
             contentDiv.innerHTML = `<p>Erro ao carregar página.</p>`;
             contentDiv.style.opacity = 1;
           });
       }, 300);
+    }
+
+    // Formulario contato
+    function setupForm() {
+      const form = document.getElementById('formulario'); // Ajuste o ID do seu form na página contato
+      const status = document.createElement('p');
+      status.id = 'mensagem-status';
+      status.style.marginTop = '10px';
+      form.appendChild(status);
+
+      emailjs.init('J8rHi3zEaQ2e9PCqD');
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        status.textContent = 'Enviando...';
+
+        emailjs.sendForm('service_izjakrc', 'template_3sfsp3n', this)
+          .then(() => {
+            status.textContent = 'Mensagem enviada com sucesso! Obrigado pelo contato.';
+            form.reset();
+          })
+          .catch((error) => {
+            status.textContent = 'Erro ao enviar. Tente novamente mais tarde.';
+            console.error('EmailJS error:', error);
+          });
+      });
     }
 
     function updateActiveLink(pagePath) {
@@ -93,5 +127,7 @@
       });
     });
   </script>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 </body>
+
 </html>
