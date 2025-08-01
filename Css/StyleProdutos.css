@@ -38,14 +38,14 @@
   padding: 60px 20px;
   box-sizing: border-box;
 
-  display: flex;            /* deixa flex pra alinhar internamente */
-  justify-content: center;  /* centraliza horizontalmente */
+  display: flex;            
+  justify-content: center;  
 }
 
 .produto-grid > .texto,
 .produto-grid > .Imagem {
-  max-width: 600px;         /* metade do 1200px dividido entre os dois */
-  flex: 1 1 0;              /* para crescer e encolher proporcional */
+  max-width: 600px;         
+  flex: 1 1 0;              
   text-align: center;
 }
 
@@ -77,13 +77,12 @@
 }
 
 #produto2 {
-
   text-align: center;
   padding: 20px 0; 
   background: #fff;
 }
 
-  /* grid 2 - mesmo estilo da produto-grid */
+/* grid 2 */
 .produto-desfiados {
   background-color: #e0e0e0;
   width: 100vw;
@@ -91,8 +90,8 @@
   padding: 60px 20px;
   box-sizing: border-box;
 
-  display: flex;            /* deixa flex pra alinhar internamente */
-  justify-content: center;  /* centraliza horizontalmente */
+  display: flex;            
+  justify-content: center;  
 }
 
 .produto-desfiados > .texto2,
@@ -135,7 +134,7 @@
   background: #fff;
 }
 
-/* --- Bloco Cordas (mesmo estilo dos anteriores) --- */
+/* grid 3 */
 .produto-cordas {
   background-color: #e0e0e0;
   width: 100vw;
@@ -160,7 +159,7 @@
 }
 
 .texto3 h3 {
-  font-size: xx-large; /* você pode mudar pra x-large se quiser mais destaque */
+  font-size: xx-large;
   margin-bottom: 15px;
   font-weight: bold;
   color: #111;
@@ -188,7 +187,7 @@
   background: #fff;
 }
 
-/* --- Bloco Palhas (mesmo visual dos anteriores) --- */
+/* grid 4 */
 .produto-palhas {
   background-color: #e0e0e0;
   width: 100vw;
@@ -241,7 +240,7 @@
   background: #fff;
 }
 
-/* --- Bloco Papel (mesmo estilo dos anteriores) --- */
+/* grid 5 */
 .produto-papel {
   background-color: #e0e0e0;
   width: 100vw;
@@ -288,21 +287,36 @@
   margin: 0 auto;
 }
 
-/* responsivo */
+/* --- Responsivo (todos os produtos) --- */
 @media (max-width: 768px) {
-  .produto-grid {
+  .produto-grid,
+  .produto-desfiados,
+  .produto-cordas,
+  .produto-palhas,
+  .produto-papel {
     flex-direction: column;
     padding: 30px 20px;
   }
 
   .produto-grid > .texto,
-  .produto-grid > .Imagem {
+  .produto-grid > .Imagem,
+  .produto-desfiados > .texto2,
+  .produto-desfiados > .Imagem2,
+  .produto-cordas > .texto3,
+  .produto-cordas > .Imagem3,
+  .produto-palhas > .texto4,
+  .produto-palhas > .Imagem4,
+  .produto-papel > .texto5,
+  .produto-papel > .Imagem5 {
     max-width: 100%;
     flex: none;
   }
 
-  .texto {
+  .texto,
+  .texto2,
+  .texto3,
+  .texto4,
+  .texto5 {
     text-align: center;
   }
 }
-
