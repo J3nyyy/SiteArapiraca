@@ -20,22 +20,26 @@
                     <p>Preencha o cadastro e receba informações exclusivas sobre nossos serviços e produtos.</p>
                 </div>
 
-                <form id="formulario">
-                    <select name="assunto" required>
+                <form id="formulario" action="https://formsubmit.co/gp@arapiraca.ind.br" method="post" enctype="multipart/form-data">
+                    <select id="assunto" name="assunto" required>
                         <option value="">Selecione o assunto</option>
                         <option value="Dúvida">Dúvida</option>
                         <option value="Sugestão">Sugestão</option>
                         <option value="Orçamento">Orçamento</option>
+                        <option value="Trabalhe Conosco">Trabalhe conosco</option>
+
                     </select>
 
                     <input placeholder="Nome" type="text" name="nome" required>
                     <input placeholder="Email" type="email" name="email" required>
-                    <input placeholder="Telefone" type="tel"  name="telefone">
+                    <input placeholder="Telefone" type="tel" name="telefone">
                     <textarea maxlength="500" placeholder="Mensagem" name="mensagem" required></textarea>
+                    <input type="text" name="_honey" style="display:none">
 
-                    <input type="file" name="arquivo" accept=".pdf,.doc,.docx"/> 
-
-                    <input type="submit" value="Enviar"/>
+                    <div style="display: none;" id='campo-arquivo'>
+                        <input type="file" name="arquivo" accept=".pdf,.doc,.docx"/>
+                    </div>        
+                    <input type="submit" value="Enviar" />
                 </form>
 
                 <p id="mensagem-status" style="margin-top: 10px;"></p>
@@ -76,7 +80,6 @@
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </section>
-    
 </body>
 
 </html>

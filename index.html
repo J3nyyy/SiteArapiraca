@@ -70,9 +70,18 @@
             currentPage = index;
             updateActiveLink(pages[index]);
 
-            // se for pagina contato, ele carrega o formulario
             if (pages[index].includes('Contato.html')) {
-              setupForm();
+              // Aguarda o conteúdo ser renderizado antes de acessar os elementos
+              setTimeout(() => {
+                const assunto = contentDiv.querySelector('#assunto');
+                const campoArquivo = contentDiv.querySelector('#campo-arquivo');
+
+                if (assunto && campoArquivo) {
+                  assunto.addEventListener('change', function () {
+                    campoArquivo.style.display = this.value === 'Trabalhe Conosco' ? 'block' : 'none';
+                  });
+                }
+              }, 100); // tempo para garantir que o HTML foi injetado
             }
           })
           .catch(() => {
@@ -82,69 +91,10 @@
       }, 300);
     }
 
-    // Formulario contato
-    function setupForm() {
-      const form = document.getElementById('formulario');
-      const status = document.createElement('p');
-      status.id = 'mensagem-status';
-      status.style.marginTop = '10px';
-      form.appendChild(status);
+    // // Formulario contato
+    // function setupForm() {
 
-      emailjs.init('J8rHi3zEaQ2e9PCqD');
-
-      form.addEventListener('submit', async function (event) {
-        event.preventDefault();
-        status.textContent = 'Enviando...';
-
-        const fileInput = form.querySelector('input[name="arquivo"]');
-        const file = fileInput?.files[0];
-
-        let fileLink = '';
-
-        if (file) {
-          const formData = new FormData();
-          formData.append('file', file);
-
-          try {
-            const response = await fetch('https://file.io', {
-              method: 'POST',
-              body: formData
-            });
-            const data = await response.json();
-
-            if (data.success) {
-              fileLink = data.link;
-            } else {
-              status.textContent = 'Erro ao enviar arquivo.';
-              return;
-            }
-          } catch (error) {
-            status.textContent = 'Erro ao conectar com file.io.';
-            return;
-          }
-        }
-
-        // Monta os parâmetros que serão enviados para o EmailJS
-        const params = {
-          nome: form.nome.value,
-          email: form.email.value,
-          telefone: form.telefone.value,
-          assunto: form.assunto.value,
-          mensagem: form.mensagem.value,
-          arquivo: fileLink || 'Nenhum arquivo enviado.'
-        };
-
-        emailjs.send('service_izjakrc', 'template_3sfsp3n', params)
-          .then(() => {
-            status.textContent = 'Mensagem enviada com sucesso! Obrigado pelo contato.';
-            form.reset();
-          })
-          .catch((error) => {
-            status.textContent = 'Erro ao enviar mensagem.';
-            console.error('EmailJS error:', error);
-          });
-      });
-    }
+    // }
 
     function updateActiveLink(pagePath) {
       document.querySelectorAll('.nav-link').forEach(link => {
