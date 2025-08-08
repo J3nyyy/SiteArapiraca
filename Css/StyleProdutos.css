@@ -41,7 +41,7 @@
 
 /* grid */
 .produto-grid {
-  background-color: #e0e0e0;
+  background-color: #F2F2F2;
   width: 100vw;
   margin: 40px 0 0 0;
   padding: 60px 20px;
@@ -86,7 +86,7 @@
 }
 
 .produto {
-  background-color: #e0e0e0;
+  background-color: #F2F2F2;
   width: 100vw;
   margin: 40px 0 0 0;
   padding: 60px 20px;
@@ -105,6 +105,10 @@
     padding: 30px 20px;
   }
 
+  .produto p {
+    width: 100vw;
+  }
+
   .produto-grid > .texto,
   .produto-grid > .Imagem {
     max-width: 100%;
@@ -118,5 +122,10 @@
   .texto .linha-verde {
     width: 80px;
     margin: 4px auto 0 auto;
+  }
+}
+@media (max-width: 1360px) {
+  .produto p {
+    width: 60vw;
   }
 }
