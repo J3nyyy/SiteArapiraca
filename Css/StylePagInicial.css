@@ -3,9 +3,8 @@
 }
 
 #content {
- min-height: 80vh;
-  /* ocupa a altura da tela */
-  width: 100%;
+ /* min-height: 80vh;
+  width: 100%; */
 
 
   display: flex;

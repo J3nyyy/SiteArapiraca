@@ -1,80 +1,49 @@
-/* Reset básico */
-body, html {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
 
-/* Estilo da seção */
-#quem-somos {
-    padding: 40px 20px;
-    background-color: #f9f9f9;
-    min-width: 100vw;
-}
-
-/* Layout em grid */
-.grid-qs {
+.grid-qs{
     display: flex;
-    flex-direction: row;
+    gap: 20px;
     align-items: center;
-    justify-content: center;
-    gap: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-    flex-wrap: wrap;
+    margin: 20px;
 }
 
-/* Colunas */
-#column {
-    flex: 1 1 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.linha-verde {
+  border-color: lightgreen;
+  margin: 5px;
+  min-width: 15%;
+  justify-self: left;
+
 }
 
-/* Título */
-#column h1 {
-    font-size: 32px;
-    color: #2e2e2e;
-    margin-bottom: 20px;
+#column{
+ text-align: center;
+ margin: 3%;
 }
 
-/* Texto */
-#desc p {
-    font-size: 18px;
-    color: #444;
-    line-height: 1.6;
-    margin-bottom: 15px;
+#desc{
+padding: 20px;
+text-align: justify;
+color: #555;
+font-size: large;
 }
 
-/* Imagem */
-#column img.side {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto; /* centraliza horizontalmente */
+#column > img{
+    height: 30vw;
 }
 
-/* Responsivo */
+#Titulo{
+    text-align: left;
+    color: black;
+}
+
 @media (max-width: 768px) {
-    .grid-qs {
-        flex-direction: column;
-        gap: 30px;
-    }
+.grid-qs{
+    flex-direction: column;
+}
 
-    #column {
-        width: 100%;
-        text-align: center;
-    }
-
-    #desc p {
-        text-align: justify;
-    }
-    /* img{
-      width: 80vh;
-    } alterar para side*/
-     .side{
-        width: 80vh;
-     }
+#column{
+    width: 80vw;
+}
+#column > img{
+    height: 100%;
+}
 }
