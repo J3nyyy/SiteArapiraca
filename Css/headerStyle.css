@@ -9,7 +9,7 @@ z-index: 4;
 
 #header {
     background-color: white;
-    margin: 10px;
+    margin: 5px;
     position: relative;
 }
 
@@ -23,16 +23,17 @@ nav {
     height: 10vh; 
     justify-content: space-between;
     align-items: center;
+    margin-right: 3%;
 }
 
 #itens {
-    margin-right: 10%;
+    /* margin-right: 10%; */
     display: flex;
     align-items: center;
 }
 
 a {
-    padding: 20px;
+    /* padding: 20px; */
     text-decoration: none;
     color: inherit;
 }
