@@ -104,10 +104,10 @@
     flex-direction: column;
     padding: 30px 20px;
   }
-
+/* 
   .produto p {
     width: 100vw;
-  }
+  } */
 
   .produto-grid > .texto,
   .produto-grid > .Imagem {
@@ -124,8 +124,8 @@
     margin: 4px auto 0 auto;
   }
 }
-@media (max-width: 1360px) {
+/* @media (max-width: 1360px) {
   .produto p {
     width: 60vw;
   }
-}
+} */
