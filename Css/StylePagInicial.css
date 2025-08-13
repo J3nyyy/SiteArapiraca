@@ -3,23 +3,11 @@
 }
 
 #content {
- /* min-height: 80vh;
-  width: 100%; */
-
-
   display: flex;
-
-  /* position: relative; */
   flex-direction: column;
-  /* empilha os itens verticalmente */
   justify-content: center;
-  /* centraliza verticalmente */
   align-items: center;
-  /* centraliza horizontalmente */
   text-align: center;
-  /* para o texto ficar centralizado */
-  /* gap: 20px; */
-  /* espaço entre a imagem e o título */
   background-color: #F2F2F2;
 }
 
@@ -32,7 +20,7 @@
 
 .title {
   display: block;
-  min-width: 100vw;
+  min-width: 99vw;
   /* ocupa toda a largura da viewport */
   margin: 0;
   padding: 0;
@@ -60,13 +48,13 @@
   
   
 .leavesBackground {
-  width: 100%;
+  /* width: 100%; */
   position: absolute;
   z-index: 2;
 }
 
 #content {
-  height: 80vh;
+  height: 70vh;
   /* ocupa a altura da tela */
   display: flex;
   position: relative;
