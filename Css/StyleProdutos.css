@@ -40,21 +40,21 @@
 
 /* alinha a esquerda titulo-descrição */
 .texto {
-  text-align: left;
+  text-align: justify;
   font-size: xx-large;
-  margin-bottom: 4px;
+  line-height: 1;
   color: #111;
 }
 /* texto-descrição */
 .texto p {
   font-size: large;
   line-height: 1.6;
-  color: #333;
+  color: #555;
 }
 
 /* imagem */
-.Imagem {
-}
+/* .Imagem {
+} */
 
 .Imagem img {
   min-width: 20vw;
@@ -67,12 +67,14 @@
 }
 /* grid */
 .produto {
-  background-color: #dddcdc;
+  /* cor ta errada */
+  /* background-color: #dddcdc; */
   width: 100vw;
   margin: 40px 0 0 0;
   padding: 60px 20px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 /* --- Responsivo (todos os produtos) --- */
