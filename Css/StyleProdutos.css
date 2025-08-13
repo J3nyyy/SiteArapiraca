@@ -1,18 +1,17 @@
 * {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
-  padding: 0;
 }
 
 #produto {
   text-align: center;
-  padding: 20px 0; 
+  padding: 20px 0;
   background: #fff;
 }
-
+/*da um espaço entre titulo e o fundo cinza*/
 .titulo-container {
   text-align: center;
-  margin-bottom: 10px; /* espaço entre o título+linha e o bloco cinza */
+  margin-bottom: 10px; 
 }
 
 .titulo-produto {
@@ -20,16 +19,16 @@
   font-weight: bold;
   margin: 0; 
 }
-
+/*linha verde titulo*/
 .titulo-container .linha-verde {
   display: block;
   width: 100px;
   height: 3px;
   background: #04be52;
-  margin: 4px auto 0 auto; /* centralizado */
+  margin: 4px auto 0 auto; 
   border-radius: 3px;
 }
-
+/*linha verde descrição*/
 .texto .linha-verde {
   display: block;
   width: 100px;              
@@ -39,37 +38,14 @@
   border-radius: 3px;
 }
 
-/* grid */
-.produto-grid {
-  background-color: #F2F2F2;
-  width: 100vw;
-  margin: 40px 0 0 0;
-  padding: 60px 20px;
-  box-sizing: border-box;
-
-  display: flex;            
-  justify-content: center;  
-}
-
-.produto-grid > .texto,
-.produto-grid > .Imagem {
-  max-width: 600px;         
-  flex: 1 1 0;              
-  text-align: center;
-}
-
-/* texto */
+/* alinha a esquerda titulo-descrição */
 .texto {
   text-align: left;
-}
-
-.texto h3 {
   font-size: xx-large;
   margin-bottom: 4px;
-  font-weight: bold;
   color: #111;
 }
-
+/* texto-descrição */
 .texto p {
   font-size: large;
   line-height: 1.6;
@@ -77,24 +53,27 @@
 }
 
 /* imagem */
-.Imagem img {
-  max-width: 450px;
-  border-radius: 8px;
-  display: block;
-  margin: 0 auto;
+.Imagem {
 }
 
+.Imagem img {
+  min-width: 20vw;
+  max-width: 30vw;
+  min-height: 40vh;
+  max-height: 50vh;
+  z-index: 0;
+  object-fit: cover; 
+  border-radius: 8px;
+}
+/* grid */
 .produto {
-  background-color: #F2F2F2;
+  background-color: #dddcdc;
   width: 100vw;
   margin: 40px 0 0 0;
   padding: 60px 20px;
-  box-sizing: border-box;
-
   display: flex;
   justify-content: center;
 }
-
 
 /* --- Responsivo (todos os produtos) --- */
 @media (max-width: 768px) {
@@ -102,16 +81,6 @@
   .produto {
     flex-direction: column;
     padding: 30px 20px;
-  }
-/* 
-  .produto p {
-    width: 100vw;
-  } */
-
-  .produto-grid > .texto,
-  .produto-grid > .Imagem {
-    max-width: 100%;
-    flex: none;
   }
 
   .texto {
@@ -122,9 +91,12 @@
     width: 80px;
     margin: 4px auto 0 auto;
   }
+
+  .Imagem img {
+  width: 100%;
+  min-height: 200px;
+  max-width: 400px;
+  border-radius: 8px;
+  margin: 0 auto;
 }
-/* @media (max-width: 1360px) {
-  .produto p {
-    width: 60vw;
-  }
-} */
+}
