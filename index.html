@@ -129,39 +129,42 @@
     let currentPage = 0;
     const contentDiv = document.getElementById('content');
 
-    function loadPage(index) {
+    async function loadPage(index) {
       if (index < 0 || index >= pages.length) return;
 
+      // 1. Começa escondendo o conteúdo
       contentDiv.style.opacity = 0;
-      setTimeout(() => {
-        fetch(pages[index])
-          .then(res => res.text())
-          .then(html => {
-            contentDiv.innerHTML = html;
-            contentDiv.scrollTop = 0;
-            contentDiv.style.opacity = 1;
-            currentPage = index;
-            updateActiveLink(pages[index]);
 
-            if (pages[index].includes('Contato.html')) {
-              // Aguarda o conteúdo ser renderizado antes de acessar os elementos
-              setTimeout(() => {
-                const assunto = contentDiv.querySelector('#assunto');
-                const campoArquivo = contentDiv.querySelector('#campo-arquivo');
+      // Pequeno delay para garantir que o CSS perceba a mudança
+      await new Promise(resolve => setTimeout(resolve, 300));
 
-                if (assunto && campoArquivo) {
-                  assunto.addEventListener('change', function () {
-                    campoArquivo.style.display = this.value === 'Trabalhe Conosco' ? 'block' : 'none';
-                  });
-                }
-              }, 100); // tempo para garantir que o HTML foi injetado
-            }
-          })
-          .catch(() => {
-            contentDiv.innerHTML = `<p>Erro ao carregar página.</p>`;
-            contentDiv.style.opacity = 1;
-          });
-      }, 300);
+      try {
+        // 2. Busca a página
+        const res = await fetch(pages[index]);
+        const html = await res.text();
+
+        // 3. Insere o conteúdo
+        contentDiv.innerHTML = html;
+        contentDiv.scrollTop = 0;
+        currentPage = index;
+        updateActiveLink(pages[index]);
+
+        // 4. Reativa funcionalidades específicas (como no contato)
+        if (pages[index].includes('Contato.html')) {
+          const assunto = contentDiv.querySelector('#assunto');
+          const campoArquivo = contentDiv.querySelector('#campo-arquivo');
+          if (assunto && campoArquivo) {
+            assunto.addEventListener('change', function () {
+              campoArquivo.style.display = this.value === 'Trabalhe Conosco' ? 'block' : 'none';
+            });
+          }
+        }
+      } catch (err) {
+        contentDiv.innerHTML = `<p>Erro ao carregar página.</p>`;
+      }
+
+      // 5. Mostra o conteúdo com transição
+      contentDiv.style.opacity = 1;
     }
 
     // // Formulario contato
@@ -188,7 +191,6 @@
       });
     });
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </body>
 
 </html>
