@@ -95,7 +95,7 @@
       padding: 10px 20px;
       font-size: 16px;
       cursor: pointer;
-      
+
     }
 
     .popup-warning {
@@ -160,7 +160,7 @@
     }
 
     function negarAcesso() {
-        window.location.href = "https://www.google.com";
+      window.location.href = "https://www.google.com";
     }
   </script>
   <script>
@@ -174,45 +174,56 @@
     ];
 
     let currentPage = 0;
+    let cleanupCarousel = null; // coloque essa variável no escopo de fora, junto com currentPage
     const contentDiv = document.getElementById('content');
 
-    async function loadPage(index) {
-      if (index < 0 || index >= pages.length) return;
+   async function loadPage(index) {
+          if (index < 0 || index >= pages.length) return;
 
-      // 1. Começa escondendo o conteúdo
-      contentDiv.style.opacity = 0;
+          // antes de trocar de página, limpe o carrossel anterior (se existir)
+          if (cleanupCarousel) { cleanupCarousel(); cleanupCarousel = null; }
 
-      // Pequeno delay para garantir que o CSS perceba a mudança
-      await new Promise(resolve => setTimeout(resolve, 300));
+          contentDiv.style.opacity = 0;
+          await new Promise(r => setTimeout(r, 300));
 
-      try {
-        // 2. Busca a página
-        const res = await fetch(pages[index]);
-        const html = await res.text();
+          try {
+            const res = await fetch(pages[index]);
+            const html = await res.text();
+            contentDiv.innerHTML = html;
+            contentDiv.scrollTop = 0;
+            currentPage = index;
+            updateActiveLink(pages[index]);
 
-        // 3. Insere o conteúdo
-        contentDiv.innerHTML = html;
-        contentDiv.scrollTop = 0;
-        currentPage = index;
-        updateActiveLink(pages[index]);
+            // comportamento da página Contato...
+            if (pages[index].includes('Contato.html')) {
+              const assunto = contentDiv.querySelector('#assunto');
+              const campoArquivo = contentDiv.querySelector('#campo-arquivo');
+              if (assunto && campoArquivo) {
+                assunto.addEventListener('change', function () {
+                  campoArquivo.style.display = this.value === 'Trabalhe Conosco' ? 'block' : 'none';
+                });
+              }
+            }
 
-        // 4. Reativa funcionalidades específicas (como no contato)
-        if (pages[index].includes('Contato.html')) {
-          const assunto = contentDiv.querySelector('#assunto');
-          const campoArquivo = contentDiv.querySelector('#campo-arquivo');
-          if (assunto && campoArquivo) {
-            assunto.addEventListener('change', function () {
-              campoArquivo.style.display = this.value === 'Trabalhe Conosco' ? 'block' : 'none';
-            });
+            // Produtos: carregue o script e inicialize
+            if (pages[index].includes('Produtos.html')) {
+              const script = document.createElement('script');
+              script.src = 'JS/Carrousel.js';
+              script.onload = () => {
+                if (window.initCarousel) {
+                  // passe o contentDiv para a função encontrar os elementos dentro dele
+                  cleanupCarousel = window.initCarousel(contentDiv);
+                }
+              };
+              document.body.appendChild(script);
+            }
+
+          } catch (err) {
+            contentDiv.innerHTML = `<p>Erro ao carregar página.</p>`;
           }
-        }
-      } catch (err) {
-        contentDiv.innerHTML = `<p>Erro ao carregar página.</p>`;
-      }
 
-      // 5. Mostra o conteúdo com transição
-      contentDiv.style.opacity = 1;
-    }
+          contentDiv.style.opacity = 1;
+        }
 
     // // Formulario contato
     // function setupForm() {
@@ -238,6 +249,7 @@
       });
     });
   </script>
+
 </body>
 
 </html>
