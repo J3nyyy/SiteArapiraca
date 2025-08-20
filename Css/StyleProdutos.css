@@ -151,7 +151,7 @@
 
   .texto .linha-verde {
     width: 80px;
-    margin: 4px auto 0 auto;
+    margin-left: 2px;
   }
 
   .Imagem img {
