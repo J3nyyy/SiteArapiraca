@@ -3,9 +3,10 @@
     box-sizing: border-box;
 }
 
-.nav-link{
-z-index: 4;
+.nav-link {
+    z-index: 4;
 }
+
 
 #header {
     background-color: white;
@@ -20,7 +21,7 @@ hr {
 
 nav {
     display: flex;
-    height: 10vh; 
+    height: 10vh;
     justify-content: space-between;
     align-items: center;
     margin-right: 3%;
@@ -67,7 +68,7 @@ a:active {
     #hamburger {
         display: flex;
     }
-    
+
     #itens {
         position: fixed;
         top: 10vh;
@@ -81,24 +82,29 @@ a:active {
         overflow: hidden;
         transition: height 0.3s ease;
         z-index: 1000;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     }
-    
+
     #itens.active {
         height: calc(100vh - 10vh);
         padding: 20px 0;
     }
-    
+
     #itens a {
         width: 100%;
         text-align: center;
         padding: 15px 0;
     }
-    
+
     nav {
         padding: 0 10px;
     }
-    .icon{
+
+    .icon {
         width: 15vw;
+    }
+
+    .nav-div {
+        visibility: hidden;
     }
 }
